@@ -5,6 +5,7 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException
 import spock.lang.Specification
 
 import com.outgrader.modules.impl.test.TestConfiguration
+import com.outgrader.modules.impl.test.TestModule
 
 /**
  * @author Nikolay Lagutko (nikolay.lagutko@mail.com)
@@ -21,6 +22,11 @@ class ApplicationRegistrySpec extends Specification {
 	}
 
 	def "check modules was loaded"() {
+		when:
+		def registry = ApplicationRegistry.get()
+
+		then:
+		registry.getBean(TestModule) != null
 	}
 
 	def "check non-modules wasn't loaded"() {
