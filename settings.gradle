@@ -1,1 +1,1 @@
-include 'outgrader-modules'
+include 'outgrader-modules', 'outgrader-core'

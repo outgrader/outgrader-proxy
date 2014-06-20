@@ -1,0 +1,4 @@
+dependencies {
+	compile group: 'ch.qos.logback',		name: 'logback-classic',	vesrion: logbackVersion
+	compile group: 'org.springframework',	name: 'spring-context',		version: springVersion
+}
