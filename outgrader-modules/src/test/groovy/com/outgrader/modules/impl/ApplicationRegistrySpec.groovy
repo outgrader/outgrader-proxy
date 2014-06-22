@@ -3,9 +3,11 @@ package com.outgrader.modules.impl
 import org.springframework.beans.factory.NoSuchBeanDefinitionException
 import org.springframework.context.support.AbstractApplicationContext
 
+import spock.lang.Ignore
 import spock.lang.Specification
 
 import com.outgrader.modules.IApplicationRegistry
+import com.outgrader.modules.IVersionedModule
 import com.outgrader.modules.impl.test.TestConfiguration
 import com.outgrader.modules.impl.test.TestModule
 
@@ -51,6 +53,47 @@ class ApplicationRegistrySpec extends Specification {
 
 		then:
 		1 * context.close()
+	}
+
+	def "check loaded modules"() {
+		expect:
+		registry.getModules() != null
+		registry.getModules().size() == 2
+	}
+
+	def "check modules by name"() {
+		expect:
+		registry.getModule('testModule') != null
+		registry.getModule('some name') != null
+	}
+
+	@Ignore
+	def "check modules hierarchy"() {
+		when:
+		def module = registry.getRootModule()
+
+		then:
+		module != null
+		module.name == 'testModule'
+		module.parent == null
+		module.chilren.size() == 1
+
+		def submodule = module.children.first
+		submodule.name == 'some name'
+		submodule.parent == module
+		submodule.children.isEmpty()
+	}
+
+	def "check only versioned modules"() {
+		expect:
+		registry.getModules(IVersionedModule.class) != null
+		registry.getModules(IVersionedModule.class).size() == 1
+	}
+
+	def "check only version module by name"() {
+		expect:
+		registry.getModule('some name', IVersionedModule.class) != null
+		registry.getModule('testModule', IVersionedModule.class) == null
 	}
 
 	def cleanupSpec() {

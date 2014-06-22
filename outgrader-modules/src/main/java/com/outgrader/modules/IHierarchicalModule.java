@@ -6,7 +6,7 @@ import java.util.Set;
  * @author Nikolay Lagutko (nikolay.lagutko@mail.com)
  *
  */
-public interface IGeneralModule extends IModule {
+public interface IHierarchicalModule extends IModule {
 
 	String getName();
 
