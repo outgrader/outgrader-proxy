@@ -1,6 +1,5 @@
 package com.outgrader.modules.impl.mixin.internal;
 
-import org.springframework.aop.DynamicIntroductionAdvice;
 import org.springframework.aop.support.DefaultIntroductionAdvisor;
 import org.springframework.core.annotation.AnnotationUtils;
 
@@ -14,7 +13,7 @@ public abstract class AbstractModuleMixinAdvisor extends DefaultIntroductionAdvi
 
 	private static final long serialVersionUID = -5261840264136793661L;
 
-	protected AbstractModuleMixinAdvisor(final DynamicIntroductionAdvice advice, final Class<?> intf) {
+	protected AbstractModuleMixinAdvisor(final AbstractModuleMixin advice, final Class<?> intf) {
 		super(advice, intf);
 	}
 

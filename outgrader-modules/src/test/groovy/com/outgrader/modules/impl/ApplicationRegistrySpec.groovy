@@ -20,6 +20,10 @@ class ApplicationRegistrySpec extends Specification {
 
 	def static registry = ApplicationRegistry.get()
 
+	def setupSpec() {
+		GroovySystem.setKeepJavaMetaClasses(true)
+	}
+
 	def "check modules was loaded"() {
 		expect:
 		registry.getBean(TestModule) != null
@@ -100,6 +104,7 @@ class ApplicationRegistrySpec extends Specification {
 	def "check default bean name as module name"() {
 		setup:
 		INamedModule module = registry.getModule('testModule', INamedModule)
+		metaclassHack(module)
 
 		when:
 		def name = module.getName()
@@ -109,8 +114,22 @@ class ApplicationRegistrySpec extends Specification {
 	}
 
 	def "check annotation congiured name as module name"() {
-		expect:
-		registry.getModule('some name').getName() == 'some name'
+		setup:
+		INamedModule module = registry.getModule('some name', INamedModule)
+		metaclassHack(module)
+
+		when:
+		def name = module.getName()
+
+		then:
+		name == 'some name'
+	}
+
+	def metaclassHack(def object) {
+		//hack to use correct metaclass
+		def metaclass = new MetaClassImpl(object.getClass())
+		metaclass.initialize()
+		object.metaClass = metaclass
 	}
 
 	def cleanupSpec() {

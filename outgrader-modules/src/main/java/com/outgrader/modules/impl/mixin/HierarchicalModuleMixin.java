@@ -2,16 +2,15 @@ package com.outgrader.modules.impl.mixin;
 
 import java.util.Set;
 
-import org.springframework.aop.support.DelegatingIntroductionInterceptor;
-
 import com.outgrader.modules.IHierarchicalModule;
 import com.outgrader.modules.IModule;
+import com.outgrader.modules.impl.mixin.internal.AbstractModuleMixin;
 
 /**
  * @author Nikolay Lagutko (nikolay.lagutko@mail.com)
  *
  */
-public class HierarchicalModuleMixin extends DelegatingIntroductionInterceptor implements IHierarchicalModule {
+public class HierarchicalModuleMixin extends AbstractModuleMixin implements IHierarchicalModule {
 
 	private static final long serialVersionUID = 3928049614432943723L;
 
