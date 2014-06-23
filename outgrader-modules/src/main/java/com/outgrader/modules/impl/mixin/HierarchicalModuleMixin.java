@@ -16,12 +16,6 @@ public class HierarchicalModuleMixin extends DelegatingIntroductionInterceptor i
 	private static final long serialVersionUID = 3928049614432943723L;
 
 	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public IModule getParent() {
 		// TODO Auto-generated method stub
 		return null;

@@ -7,6 +7,7 @@ import spock.lang.Ignore
 import spock.lang.Specification
 
 import com.outgrader.modules.IApplicationRegistry
+import com.outgrader.modules.INamedModule
 import com.outgrader.modules.IVersionedModule
 import com.outgrader.modules.impl.test.TestConfiguration
 import com.outgrader.modules.impl.test.TestModule
@@ -96,7 +97,24 @@ class ApplicationRegistrySpec extends Specification {
 		registry.getModule('testModule', IVersionedModule.class) == null
 	}
 
+	def "check default bean name as module name"() {
+		setup:
+		INamedModule module = registry.getModule('testModule', INamedModule)
+
+		when:
+		def name = module.getName()
+
+		then:
+		name == 'testModule'
+	}
+
+	def "check annotation congiured name as module name"() {
+		expect:
+		registry.getModule('some name').getName() == 'some name'
+	}
+
 	def cleanupSpec() {
 		registry.close()
 	}
 }
+

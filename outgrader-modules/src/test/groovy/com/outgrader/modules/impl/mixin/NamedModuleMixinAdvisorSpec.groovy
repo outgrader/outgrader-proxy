@@ -7,10 +7,10 @@ import com.outgrader.modules.impl.mixin.internal.AbstractModuleMixinAdvisorSpec
  * @author Nikolay Lagutko (nikolay.lagutko@mail.com)
  *
  */
-class HierarchicalModuleMixinAdvisorSpec extends AbstractModuleMixinAdvisorSpec {
+class NamedModuleMixinAdvisorSpec extends AbstractModuleMixinAdvisorSpec {
 
 	@Override
 	public AbstractModuleMixinAdvisor createAdvisor() {
-		new HierarchicalModuleMixinAdvisor()
+		new NamedModuleMixinAdvisor()
 	}
 }

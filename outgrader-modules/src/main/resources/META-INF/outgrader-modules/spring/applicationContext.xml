@@ -6,5 +6,6 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
 	<bean id="hierarchicalModuleMixinAdvisor" class="com.outgrader.modules.impl.mixin.HierarchicalModuleMixinAdvisor" />
-	<bean id="versionedModuleMixinAdvisor" class="com.outgrader.modules.impl.mixin.VersionedModuleMixinAdvisor" />	
+	<bean id="versionedModuleMixinAdvisor" class="com.outgrader.modules.impl.mixin.VersionedModuleMixinAdvisor" />
+	<bean id="namedModuleMixinAdvisor" class="com.outgrader.modules.impl.mixin.NamedModuleMixinAdvisor" />	
 </beans>

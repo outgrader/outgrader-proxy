@@ -8,8 +8,6 @@ import java.util.Set;
  */
 public interface IHierarchicalModule extends IModule {
 
-	String getName();
-
 	IModule getParent();
 
 	Set<IModule> getChildren();
