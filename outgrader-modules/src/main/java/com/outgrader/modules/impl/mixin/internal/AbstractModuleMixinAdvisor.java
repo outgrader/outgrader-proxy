@@ -13,7 +13,7 @@ public abstract class AbstractModuleMixinAdvisor extends DefaultIntroductionAdvi
 
 	private static final long serialVersionUID = -5261840264136793661L;
 
-	protected AbstractModuleMixinAdvisor(final AbstractModuleMixin advice, final Class<?> intf) {
+	protected AbstractModuleMixinAdvisor(final AbstractModuleMixin<?> advice, final Class<?> intf) {
 		super(advice, intf);
 	}
 
