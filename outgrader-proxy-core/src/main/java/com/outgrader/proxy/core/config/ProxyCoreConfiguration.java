@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import com.outgrader.proxy.core.properties.IProxyProperties;
+import com.outgrader.proxy.core.statistics.IStatisticsConfigurer;
+import com.outgrader.proxy.core.statistics.impl.StatisticsConfigurerImpl;
 import com.outgrader.statistics.config.StatisticsConfiguration;
 
 /**
@@ -30,6 +32,11 @@ public class ProxyCoreConfiguration {
 	@Bean
 	public IStatisticsHandler statistcsHandler() {
 		return new AsyncStatisticsHandler(statisticsManager, proxyProperties().getStatisticsThreadNumber());
+	}
+
+	@Bean
+	public IStatisticsConfigurer statisticsConfigurer() {
+		return new StatisticsConfigurerImpl(proxyProperties());
 	}
 
 }
