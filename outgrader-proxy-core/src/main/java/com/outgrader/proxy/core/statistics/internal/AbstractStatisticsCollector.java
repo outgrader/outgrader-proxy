@@ -1,4 +1,4 @@
-package com.outgrader.statistics.impl;
+package com.outgrader.proxy.core.statistics.internal;
 
 import org.gerzog.jstataggr.annotations.Expression;
 import org.gerzog.jstataggr.annotations.StatisticsKey;
@@ -13,8 +13,12 @@ public abstract class AbstractStatisticsCollector {
 	@Expression("@statisticsConfigurer.resolveTimestamp(#this)")
 	private final long timestamp;
 
-	protected AbstractStatisticsCollector() {
+	public AbstractStatisticsCollector() {
 		this.timestamp = System.currentTimeMillis();
+	}
+
+	public long getTimestamp() {
+		return timestamp;
 	}
 
 }

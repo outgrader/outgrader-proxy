@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 @Configuration
-public class StatisticsConfig {
+public class StatisticsConfiguration {
 
 	@Bean
 	public IExpressionHandler expressionHandler() {

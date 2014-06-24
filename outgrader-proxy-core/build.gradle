@@ -1,0 +1,10 @@
+repositories {
+	jcenter()
+}
+
+dependencies {
+	compile project(':outgrader-statistics')
+	compile project(':outgrader-properties')
+	
+	compile group: 'commons-beanutils',	name: 'commons-beanutils',	version: commonsBeanutilsVersion
+}

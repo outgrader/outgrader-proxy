@@ -1,4 +1,4 @@
-package com.outgrader.statistics;
+package com.outgrader.proxy.core.statistics;
 
 /**
  * @author Nikolay Lagutko (nikolay.lagutko@mail.com)
