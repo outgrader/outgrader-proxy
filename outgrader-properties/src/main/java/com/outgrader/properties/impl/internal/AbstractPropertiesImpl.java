@@ -77,6 +77,10 @@ public class AbstractPropertiesImpl {
 				}
 			});
 		}
+
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("finish initialize()");
+		}
 	}
 
 	@PreDestroy
