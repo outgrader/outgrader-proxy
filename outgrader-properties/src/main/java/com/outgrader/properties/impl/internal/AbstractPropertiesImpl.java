@@ -45,16 +45,26 @@ public class AbstractPropertiesImpl {
 		return configuration;
 	}
 
+	protected void setChanged(final boolean isChanged) {
+		this.isChanged = isChanged;
+	}
+
+	protected boolean isChanged() {
+		return isChanged;
+	}
+
 	@PostConstruct
 	public void initialize() {
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("start initialize()");
 		}
 
-		LOGGER.info("Initializing properties %s", propertiesName);
+		LOGGER.info("Initializing {} properties", propertiesName);
 
 		notNull(propertySource, "PropertySource was not initialized!");
 		configuration = propertySource.getConfiguration();
+
+		notNull(configuration, "Configuration defined by property source cannot be null");
 
 		if (configuration instanceof EventSource) {
 			((EventSource) configuration).addConfigurationListener(new ConfigurationListener() {
@@ -62,7 +72,7 @@ public class AbstractPropertiesImpl {
 				@Override
 				public void configurationChanged(final ConfigurationEvent event) {
 					if (event.getType() == AbstractConfiguration.EVENT_SET_PROPERTY) {
-						isChanged = true;
+						setChanged(true);
 					}
 				}
 			});
