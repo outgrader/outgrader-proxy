@@ -9,7 +9,7 @@ import com.outgrader.modules.annotations.Module
  * @author Nikolay Lagutko (nikolay.lagutko@mail.com)
  *
  */
-abstract class AbstractModuleMixinAdvisorSpec extends Specification {
+class AbstractModuleMixinAdvisorSpec extends Specification {
 
 	@Module
 	class AnnotatedModule {
@@ -18,7 +18,11 @@ abstract class AbstractModuleMixinAdvisorSpec extends Specification {
 	class NotAnnotatedModule {
 	}
 
-	def advisor = createAdvisor()
+	AbstractModuleMixin mixin = Mock(AbstractModuleMixin)
+
+	Class clazz = Comparable.class
+
+	def advisor = Spy(AbstractModuleMixinAdvisor, constructorArgs: [mixin, clazz])
 
 	def "check advisor will be applied for annotated class"() {
 		expect:
@@ -29,8 +33,4 @@ abstract class AbstractModuleMixinAdvisorSpec extends Specification {
 		expect:
 		!advisor.matches(NotAnnotatedModule)
 	}
-
-
-
-	abstract AbstractModuleMixinAdvisor createAdvisor()
 }
