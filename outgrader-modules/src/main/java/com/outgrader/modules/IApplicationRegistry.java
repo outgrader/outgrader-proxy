@@ -15,8 +15,6 @@ public interface IApplicationRegistry extends Closeable {
 
 	IModule getModule(String name);
 
-	IModule getRootModule();
-
 	<T extends IModule> Collection<T> getModules(Class<T> clazz);
 
 	<T extends IModule> T getModule(String name, Class<T> clazz);

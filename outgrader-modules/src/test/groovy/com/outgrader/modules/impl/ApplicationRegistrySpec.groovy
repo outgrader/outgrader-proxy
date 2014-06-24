@@ -3,7 +3,6 @@ package com.outgrader.modules.impl
 import org.springframework.beans.factory.NoSuchBeanDefinitionException
 import org.springframework.context.support.AbstractApplicationContext
 
-import spock.lang.Ignore
 import spock.lang.Specification
 
 import com.outgrader.modules.IApplicationRegistry
@@ -63,7 +62,7 @@ class ApplicationRegistrySpec extends Specification {
 	def "check loaded modules"() {
 		expect:
 		registry.getModules() != null
-		registry.getModules().size() == 2
+		registry.getModules().size() == 3
 	}
 
 	def "check modules by name"() {
@@ -72,27 +71,10 @@ class ApplicationRegistrySpec extends Specification {
 		registry.getModule('some name') != null
 	}
 
-	@Ignore
-	def "check modules hierarchy"() {
-		when:
-		def module = registry.getRootModule()
-
-		then:
-		module != null
-		module.name == 'testModule'
-		module.parent == null
-		module.chilren.size() == 1
-
-		def submodule = module.children.first
-		submodule.name == 'some name'
-		submodule.parent == module
-		submodule.children.isEmpty()
-	}
-
 	def "check only versioned modules"() {
 		expect:
 		registry.getModules(IVersionedModule.class) != null
-		registry.getModules(IVersionedModule.class).size() == 1
+		registry.getModules(IVersionedModule.class).size() == 2
 	}
 
 	def "check only version module by name"() {
@@ -123,6 +105,20 @@ class ApplicationRegistrySpec extends Specification {
 
 		then:
 		name == 'some name'
+	}
+
+	def "check versioned module"() {
+		setup:
+		IVersionedModule module = registry.getModule('some name', IVersionedModule)
+		metaclassHack(module)
+
+		when:
+		def version = module.version
+		def buildDate = module.buildDate
+
+		then:
+		version == '0.0.1-SNAPSHOT'
+		buildDate == '24.06.2014 12:30'
 	}
 
 	def metaclassHack(def object) {

@@ -79,12 +79,6 @@ public class ApplicationRegistry implements IApplicationRegistry {
 	}
 
 	@Override
-	public IModule getRootModule() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public <T extends IModule> Collection<T> getModules(final Class<T> clazz) {
 		return getApplicationContext().getBeansOfType(clazz).values();
 	}

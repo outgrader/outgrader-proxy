@@ -41,5 +41,4 @@ class ModuleMixinUtils {
 
 		return clazz;
 	}
-
 }

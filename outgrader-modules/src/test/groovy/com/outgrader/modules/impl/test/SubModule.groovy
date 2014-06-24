@@ -12,7 +12,7 @@ import com.outgrader.modules.annotations.Module
  *
  */
 @Module('some name')
-@Import(Module.class)
+@Import(TestModule.class)
 class SubModule {
 
 	@Autowired
