@@ -1,0 +1,5 @@
+dependencies {
+	compile project(':outgrader-core')
+	
+	compile group: 'commons-configuration',	name: 'commons-configuration',	version: commonsConfigurationVersion
+}

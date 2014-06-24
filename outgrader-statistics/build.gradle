@@ -1,0 +1,11 @@
+repositories {
+	jcenter()
+}
+
+dependencies {
+	compile project(':outgrader-core')
+	
+//	compile group: 'org.gerzog.jstataggr',	name: 'jstataggr-core',	version: jStatAggrVersion
+//	compile group: 'org.gerzog.jstataggr',	name: 'jstataggr-csv',	version: jStatAggrVersion
+//	compile group: 'org.gerzog.jstataggr',	name: 'jstataggr-spel',	version: jStatAggrVersion
+}
