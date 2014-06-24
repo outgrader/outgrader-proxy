@@ -1,0 +1,11 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+import java.text.SimpleDateFormat
+
+def DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy HH:mm")
+
+processResources {
+	filter ReplaceTokens, tokens: [
+		version: project.version
+		build_date: DATE_FORMAT.parse(new Date(System.currentTimeMillis()))
+	]
+}
