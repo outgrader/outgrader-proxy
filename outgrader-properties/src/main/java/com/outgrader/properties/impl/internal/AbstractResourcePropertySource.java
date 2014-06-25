@@ -19,7 +19,7 @@ import com.outgrader.properties.impl.IPropertySource;
  */
 public abstract class AbstractResourcePropertySource implements IPropertySource {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractResourcePropertySourceSpec.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractResourcePropertySource.class);
 
 	private Configuration configuration;
 
